@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#050b18" />
+  <meta name="description" content="Yelen community powered electricity outage reporting for Sierra Leone." />
+  <title>Yelen Salone | Community power reports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="simulator.css" />
+  <link rel="stylesheet" href="monitor-theme.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Yelen Salone home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Yelen <b>Salone</b></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#simulator">Outage map</a>
+      <a href="#how">How it works</a>
+      <button class="language" type="button" aria-label="Language selector">EN <span>⌄</span></button>
+    </nav>
+    <button class="menu" aria-label="Open menu" aria-expanded="false">☰</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> Community power intelligence</div>
+        <h1>Know when the<br><em>light dae.</em></h1>
+        <p>Live electricity outage reports, powered by communities across Sierra Leone.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-open-report><span>＋</span> Report an outage</button>
+          <a class="btn btn-ghost" href="#simulator">Open night map <span>↘</span></a>
+        </div>
+        <p class="trust"><span>✓</span> No account needed &nbsp;·&nbsp; Uses very little data</p>
+      </div>
+      <div class="hero-visual" aria-label="Illustration of community reports across Sierra Leone">
+        <div class="sun sun-one"></div><div class="sun sun-two"></div>
+        <svg class="map" viewBox="0 0 420 500" role="img" aria-label="Stylized map of Sierra Leone">
+          <path d="M178 27c36 3 91 29 125 51 31 21 59 31 67 68 9 39-5 77 12 113 15 32 3 61-18 87-24 30-31 71-65 92-29 19-74 28-109 25-39-3-63-27-86-55-19-24-41-44-52-73-12-31-7-65 2-96 10-34 9-74 32-103 23-30 51-52 66-85 7-15 9-25 26-24Z" fill="#f1d17c" stroke="#071f1c" stroke-width="5"/>
+          <g fill="none" stroke="#856e35" stroke-width="2" opacity=".72"><path d="M91 129c60 33 179 42 273 19"/><path d="M58 240c80 22 210 6 319 24"/><path d="M87 373c87-23 195 1 251 39"/><path d="M177 29c19 82-24 147-9 223 12 62 56 133 34 207"/><path d="M303 78c-28 85-21 186 32 265"/></g>
+          <g class="map-dots"><circle cx="116" cy="313" r="10"/><circle cx="150" cy="175" r="8"/><circle cx="265" cy="130" r="8"/><circle cx="286" cy="288" r="11"/><circle cx="226" cy="393" r="8"/><circle cx="349" cy="223" r="7"/></g>
+        </svg>
+        <div class="map-label label-freetown"><span></span><b>Freetown</b><small>12 reports</small></div>
+        <div class="map-label label-bo"><span></span><b>Bo</b><small>Power on</small></div>
+        <div class="map-label label-makeni"><span></span><b>Makeni</b><small>4 reports</small></div>
+        <div class="signal-card"><span class="signal-bars">▂▄▆</span><div><b>Reports become signals</b><small>Yelen groups nearby reports to spot likely outages.</small></div></div>
+      </div>
+    </section>
+
+    <section class="simulator" id="simulator">
+      <div class="sim-head"><div><div class="eyebrow"><span class="pulse"></span> Live simulation</div><h2>Salone after dark.</h2><p>Watch community reports form outage signals across the network.</p></div><div class="sim-actions"><button class="map-tool active" data-map-layer="reports">● Reports</button><button class="map-tool" data-map-layer="heat">◉ Heat</button><button class="play-button" id="playSimulation"><span>▶</span> Run simulation</button></div></div>
+      <div class="map-shell">
+        <div class="map-canvas" id="mapCanvas"><div class="map-glow glow-a"></div><div class="map-glow glow-b"></div><div class="map-grid"></div>
+          <svg class="roads" viewBox="0 0 1100 570" preserveAspectRatio="none" aria-hidden="true"><g class="minor-roads"><path d="M-20 120C150 100 210 250 420 195S720 35 1130 135"/><path d="M90-20c80 190 240 240 250 610"/><path d="M-40 490C200 350 260 360 430 430s390 40 710-110"/><path d="M670-20c-80 160-70 310 40 610"/><path d="M1000-20C880 180 900 310 1130 480"/><path d="M-20 300c200-40 430 20 600-30s300-20 550 30"/></g><g class="major-roads"><path d="M-30 410C160 330 240 145 460 190s270 160 670 35"/><path d="M180-20c5 180 210 220 300 360s310 180 420 260"/></g></svg>
+          <div class="district-label dl-freetown">FREETOWN<small>Western Area</small></div><div class="district-label dl-makeni">MAKENI<small>Bombali</small></div><div class="district-label dl-bo">BO<small>Southern Province</small></div><div class="district-label dl-kenema">KENEMA<small>Eastern Province</small></div><div class="district-label dl-koidu">KOIDU<small>Kono</small></div>
+          <button class="map-pin outage" style="--x:17%;--y:46%" data-place="Congo Cross"><i></i><span>12</span></button><button class="map-pin outage" style="--x:43%;--y:27%" data-place="Makeni Central"><i></i><span>4</span></button><button class="map-pin stable" style="--x:47%;--y:69%" data-place="Bo Town"><i></i><span>8</span></button><button class="map-pin outage" style="--x:69%;--y:65%" data-place="Hangha Road"><i></i><span>5</span></button><button class="map-pin watch" style="--x:82%;--y:43%" data-place="Koidu"><i></i><span>2</span></button>
+          <div class="map-popup" id="mapPopup"><button aria-label="Close popup">×</button><small>LIKELY OUTAGE</small><h3>Congo Cross</h3><p>12 reports in the last 30 min</p><div><span>Detected 8:42 PM</span><b>High confidence</b></div></div>
+          <div class="map-legend"><span><i class="red-dot"></i> Likely outage</span><span><i class="gold-dot"></i> Monitoring</span><span><i class="green-dot"></i> Restored</span></div><div class="zoom-control"><button aria-label="Zoom in">+</button><button aria-label="Zoom out">−</button></div><div class="sim-clock"><small>SIMULATION TIME</small><b id="simTime">8:42 PM</b><div class="clock-track"><i id="clockProgress"></i></div></div>
+        </div>
+        <aside class="activity-panel"><div class="activity-title"><span>Signal feed</span><i>● LIVE</i></div><div id="signalFeed"><article><span class="feed-dot red"></span><div><b>New report · Congo Cross</b><small>Power off · 1 min ago</small></div></article><article><span class="feed-dot amber"></span><div><b>Pattern forming · Makeni</b><small>4 reports nearby · 6 min ago</small></div></article><article><span class="feed-dot green"></span><div><b>Power returned · Bo Town</b><small>8 confirmations · 14 min ago</small></div></article><article><span class="feed-dot red"></span><div><b>Cluster detected · Kenema</b><small>Confidence now 76% · 21 min ago</small></div></article></div><div class="activity-foot"><span>29 signals today</span><span>5 areas online</span></div></aside>
+      </div><p class="sim-note">◇ Prototype simulation using sample community data. This is not an official EDSA service.</p>
+    </section>
+
+    <section class="status" id="status">
+      <div class="section-heading">
+        <div><span class="kicker">Live community status</span><h2>What people are reporting</h2></div>
+        <div class="updated"><span></span> Updated just now</div>
+      </div>
+      <div class="filters" role="group" aria-label="Filter reports by district">
+        <button class="filter active" data-filter="All">All areas</button>
+        <button class="filter" data-filter="Western Area">Western Area</button>
+        <button class="filter" data-filter="Bo">Bo</button>
+        <button class="filter" data-filter="Bombali">Bombali</button>
+        <button class="filter" data-filter="Kenema">Kenema</button>
+      </div>
+      <div class="status-layout">
+        <div class="report-list" id="reportList" aria-live="polite"></div>
+        <aside class="summary-card">
+          <div class="summary-top"><span>Network pulse</span><span class="live-pill">● LIVE</span></div>
+          <div class="big-number" id="activeCount">3</div><p>likely active outages</p>
+          <div class="meter"><i style="width:62%"></i></div>
+          <div class="summary-grid"><div><b id="reportCount">29</b><small>Reports today</small></div><div><b>5</b><small>Districts active</small></div></div>
+          <button class="btn btn-light" data-open-report>Send a report <span>→</span></button>
+          <small class="disclaimer">Community estimates. Not an official EDSA notice.</small>
+        </aside>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <span class="kicker">Built for everyone</span><h2>Three taps. One clearer picture.</h2>
+      <div class="steps">
+        <article><span class="step-icon">⌖</span><b>1</b><h3>Choose your area</h3><p>Select the district and community where the problem is happening.</p></article>
+        <article><span class="step-icon">☀</span><b>2</b><h3>Tell us the status</h3><p>Say whether power is off, unstable, or has returned.</p></article>
+        <article><span class="step-icon">⌁</span><b>3</b><h3>Yelen finds the signal</h3><p>Nearby reports are grouped to identify likely community outages.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#top"><span class="brand-mark"><i></i><i></i><i></i></span><span>Yelen <b>Salone</b></span></a><p>Community powered electricity visibility for Sierra Leone.</p><small>Prototype · Reports shown are sample data</small></footer>
+
+  <dialog id="reportDialog">
+    <form method="dialog" id="reportForm">
+      <button class="close" type="button" aria-label="Close">×</button>
+      <span class="kicker">Quick community report</span><h2>Wetin happen wit di light?</h2><p class="form-intro">Your report helps neighbours understand what is happening nearby.</p>
+      <label>District<select id="district" required><option value="">Choose district</option><option>Western Area</option><option>Bo</option><option>Bombali</option><option>Kenema</option><option>Kono</option><option>Port Loko</option><option>Tonkolili</option></select></label>
+      <label>Community or neighbourhood<input id="community" required maxlength="40" placeholder="e.g. Congo Cross" /></label>
+      <fieldset><legend>Power status</legend><div class="status-options"><label><input type="radio" name="power" value="Power off" required><span>◐<b>Power off</b></span></label><label><input type="radio" name="power" value="Unstable"><span>ϟ<b>Unstable</b></span></label><label><input type="radio" name="power" value="Power restored"><span>☀<b>Restored</b></span></label></div></fieldset>
+      <button class="btn btn-primary submit" value="default" type="submit">Submit report <span>→</span></button>
+      <small class="privacy">No name, phone number, or account required.</small>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status">✓ Report received. Tenki!</div>
+  <script src="app.js"></script>
+</body>
+</html>
